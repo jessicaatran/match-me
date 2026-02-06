@@ -1,0 +1,189 @@
+:root {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #B1BACB; 
+  color: #26415f;
+}
+
+button {
+  font-family: inherit;
+}
+
+.app {
+  width: min(720px, 92vw);
+  display: grid;
+  place-items: center;
+}
+
+.screen {
+  width: 100%;
+}
+
+.screen--center {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px; 
+}
+
+
+.hidden {
+  display: none;
+}
+
+.title {
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.btn {
+  border: 2px solid #2F4F6F;
+  background: #FFE9EC;
+  color: #2F4F6F;
+  padding: 10px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  min-width: 160px;
+}
+
+.btn--ghost {
+  background: transparent;
+}
+
+.game-header {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  margin-bottom: 14px;
+}
+
+.stats {
+  display: flex;
+  gap: 14px;
+  opacity: 0.85;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 12px;
+  justify-content: center;
+  width: min(340px, 90vw);
+  margin: 0 auto;
+}
+
+.card {
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  border: 2px solid #2F4F6F;
+  background: #FFE9EC;
+  cursor: pointer;
+  user-select: none;
+  display: grid;
+  place-items: center;
+  font-size: 34px;
+}
+
+.card:disabled {
+  cursor: default;
+  opacity: 0.9;
+}
+
+/* Card back image (hidden state) */
+.card.back {
+  /* background-image: url("./assets/heart.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 52%; */
+  color: transparent; /* hides emoji text if any */
+}
+
+/* Revealed state */
+.card.revealed {
+  background-image: none;
+  color: inherit;
+}
+
+.panel {
+  width: min(320px, 86vw);
+  height: 440px;
+  background: #FFE9EC;
+  border: 2px solid #2F4F6F;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 28px 18px;
+}
+
+.win-title {
+  margin: 0;
+  font-size: 24px;
+}
+
+.win-sub {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* gentle floating animation */
+.floaty {
+  display: inline-block;
+  animation: floaty 4.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes floaty {
+  0%   { transform: translate(0px, 0px) rotate(-0.3deg); }
+  50%  { transform: translate(0px, -6px) rotate(0.3deg); }
+  100% { transform: translate(0px, 0px) rotate(-0.3deg); }
+}
+
+
+/* Floating pixel hearts */
+.float-layer {
+  position: fixed;
+  inset: 0;          /* top/right/bottom/left: 0 */
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.pixel {
+  position: absolute;
+  bottom: -40px;     /* start just below viewport */
+  width: 22px;       /* tweak size */
+  height: 22px;
+  image-rendering: pixelated;
+  opacity: 0.9;
+
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translate(var(--x, 0px), 0) rotate(0deg);
+  }
+  to {
+    transform: translate(var(--x, 0px), calc(-1 * (100vh + 120px))) rotate(12deg);
+  }
+}

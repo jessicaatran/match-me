@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>match me ♡</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main class="app">
+      <!-- SCREEN 1: Start -->
+      <section id="start-screen" class="screen screen--center">
+        <h1 class="title floaty">♡ let’s play a game ♡</h1>
+        <button id="start-btn" class="btn" type="button">start</button>
+      </section>
+
+      <!-- SCREEN 2: Game -->
+      <section id="game-screen" class="screen hidden">
+        <header class="game-header">
+          <h1 class="title floaty">match me</h1>
+
+          <div class="stats">
+            <span>moves: <b id="moves">0</b></span>
+            <span>matches: <b id="matches">0</b>/6</span>
+          </div>
+
+          <!-- <div class="actions">
+            <button id="reset" class="btn btn--ghost" type="button">new game</button>
+            <button id="back-btn" class="btn btn--ghost" type="button">back</button>
+          </div> -->
+        </header>
+
+        <section id="board" class="board" aria-label="Card board"></section>
+      </section>
+      
+      <!-- SCREEN 3: Win -->
+      <section id="win-screen" class="screen hidden screen--center">
+        <div class="panel">
+          <div class="win-text">
+            <p class="win-title">you won!! &lt;3</p>
+            <p class="win-sub">
+              please contact jess for<br />
+              your prize
+            </p>
+          </div>
+        </div>
+
+      </section>
+    
+    </main>
+
+    <div id="float-layer" class="float-layer" aria-hidden="true"></div>
+
+
+    <script src="./script.js"></script>
+  </body>
+</html>
