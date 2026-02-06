@@ -13,6 +13,12 @@ const winScreen = document.getElementById("win-screen");
 
 const floatLayer = document.getElementById("float-layer");
 
+const CARD_BACKS = [
+  "./card_back/back1.png"
+  // "./card_back/back2.png",
+  // "./card_back/back3.png",
+];
+
 const EMOJIS = ["🍮", "🍪", "🍨", "🤍", "🐈", "🍞"];
 
 let deck = [];
@@ -54,15 +60,25 @@ function setStats() {
 function createCardButton(value, index) {
   const btn = document.createElement("button");
   btn.type = "button";
-  btn.className = "card back"; 
+  btn.className = "card back";
+
   btn.dataset.value = value;
   btn.dataset.index = String(index);
-  btn.textContent = "";
-  btn.setAttribute("aria-label", "Hidden card");
 
+  // pick a random back image for THIS card
+  const randomBack =
+    CARD_BACKS[Math.floor(Math.random() * CARD_BACKS.length)];
+  btn.dataset.back = randomBack;
+
+  // start hidden
+  btn.textContent = "";
+  btn.style.backgroundImage = `url("${randomBack}")`;
+
+  btn.setAttribute("aria-label", "Hidden card");
   btn.addEventListener("click", onCardClick);
   return btn;
 }
+
 
 function renderBoard() {
   boardEl.innerHTML = "";
@@ -74,17 +90,25 @@ function renderBoard() {
 function reveal(btn) {
   btn.classList.remove("back");
   btn.classList.add("revealed");
+
   btn.textContent = btn.dataset.value;
+  btn.style.backgroundImage = "none";
+
   btn.setAttribute("aria-label", `Card: ${btn.dataset.value}`);
 }
+
 
 
 function hide(btn) {
   btn.classList.remove("revealed");
   btn.classList.add("back");
-  btn.textContent = ""; 
+
+  btn.textContent = "";
+  btn.style.backgroundImage = `url("${btn.dataset.back}")`;
+
   btn.setAttribute("aria-label", "Hidden card");
 }
+
 
 
 function markMatched(a, b) {
