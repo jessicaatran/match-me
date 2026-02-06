@@ -139,6 +139,16 @@ button {
    color: #2F4F6F !important;
 }
 
+.icon {
+  width: 95%;
+  height: 95%;
+  object-fit: contain;
+  image-rendering: auto; /* or pixelated if your icons are pixel art */
+  pointer-events: none;  /* prevents taps on the img */
+  user-select: none;
+}
+
+
 .panel {
   width: min(320px, 86vw);
   height: 440px;

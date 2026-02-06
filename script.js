@@ -19,7 +19,7 @@ const CARD_BACKS = [
   // "./card_back/back3.png",
 ];
 
-const EMOJIS = ["🍮", "🍪", "🍨", "🤍", "🐈", "🍞"];
+const ICON_IDS = ["1", "2", "3", "4", "5", "6"];
 
 let deck = [];
 let firstCard = null;
@@ -48,9 +48,10 @@ function shuffle(arr) {
 }
 
 function buildDeck() {
-  const pairs = EMOJIS.flatMap((e) => [e, e]); // 12 cards
+  const pairs = ICON_IDS.flatMap((id) => [id, id]); // 12 cards
   return shuffle(pairs);
 }
+
 
 function setStats() {
   movesEl.textContent = String(moves);
@@ -62,19 +63,12 @@ function createCardButton(value, index) {
   btn.type = "button";
   btn.className = "card back";
 
-  btn.dataset.value = value;
+  btn.dataset.value = value; // now this is "1".."6"
   btn.dataset.index = String(index);
 
-  // pick a random back image for THIS card
-  const randomBack =
-    CARD_BACKS[Math.floor(Math.random() * CARD_BACKS.length)];
-  btn.dataset.back = randomBack;
-
-  // start hidden
-  btn.textContent = "";
-  btn.style.backgroundImage = `url("${randomBack}")`;
-
+  btn.innerHTML = ""; // use innerHTML since we’ll insert <img> later
   btn.setAttribute("aria-label", "Hidden card");
+
   btn.addEventListener("click", onCardClick);
   return btn;
 }
@@ -91,24 +85,18 @@ function reveal(btn) {
   btn.classList.remove("back");
   btn.classList.add("revealed");
 
-  btn.textContent = btn.dataset.value;
-  btn.style.backgroundImage = "none";
-
-  btn.setAttribute("aria-label", `Card: ${btn.dataset.value}`);
+  const id = btn.dataset.value;
+  btn.innerHTML = `<img class="icon" src="./assets/icons/${id}.png" alt="icon ${id}" />`;
+  btn.setAttribute("aria-label", `Card: icon ${id}`);
 }
-
-
 
 function hide(btn) {
   btn.classList.remove("revealed");
   btn.classList.add("back");
 
-  btn.textContent = "";
-  btn.style.backgroundImage = `url("${btn.dataset.back}")`;
-
+  btn.innerHTML = "";
   btn.setAttribute("aria-label", "Hidden card");
 }
-
 
 
 function markMatched(a, b) {
