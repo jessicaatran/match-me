@@ -48,6 +48,19 @@ button {
   white-space: nowrap;
 }
 
+/* gentle floating animation */
+.floaty {
+  display: inline-block;
+  animation: floaty 4.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes floaty {
+  0%   { transform: translate(0px, 0px) rotate(-0.3deg); }
+  50%  { transform: translate(0px, -6px) rotate(0.3deg); }
+  100% { transform: translate(0px, 0px) rotate(-0.3deg); }
+}
+
 .btn {
   border: 2px solid #2F4F6F;
   background: #FFE9EC;
@@ -112,14 +125,9 @@ button {
   opacity: 0.9;
 }
 
-/* Card back image (hidden state) */
-.card.back {
-  /* background-image: url("./assets/heart.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 52%; */
-  color: transparent; /* hides emoji text if any */
-}
+/* .card.back {
+
+} */
 
 /* Revealed state */
 .card.revealed {
@@ -140,6 +148,13 @@ button {
   padding: 28px 18px;
 }
 
+.win-text {
+  display: flex;
+  flex-direction: column;
+  gap: 28px; /* 👈 increase this */
+  text-align: center;
+}
+
 .win-title {
   margin: 0;
   font-size: 24px;
@@ -149,19 +164,6 @@ button {
   margin: 0;
   font-size: 18px;
   line-height: 1.4;
-}
-
-/* gentle floating animation */
-.floaty {
-  display: inline-block;
-  animation: floaty 4.5s ease-in-out infinite;
-  will-change: transform;
-}
-
-@keyframes floaty {
-  0%   { transform: translate(0px, 0px) rotate(-0.3deg); }
-  50%  { transform: translate(0px, -6px) rotate(0.3deg); }
-  100% { transform: translate(0px, 0px) rotate(-0.3deg); }
 }
 
 
