@@ -13,11 +13,13 @@ const winScreen = document.getElementById("win-screen");
 
 const floatLayer = document.getElementById("float-layer");
 
-const CARD_BACKS = [
-  "./card_back/back1.png"
-  // "./card_back/back2.png",
-  // "./card_back/back3.png",
-];
+const CARD_BACK = "./card_back/back1.png";
+
+// const CARD_BACKS = [
+//   "./card_back/back1.png",
+//   "./card_back/back2.png",
+//   "./card_back/back3.png",
+// ];
 
 const ICON_IDS = ["1", "2", "3", "4", "5", "6"];
 
@@ -63,12 +65,14 @@ function createCardButton(value, index) {
   btn.type = "button";
   btn.className = "card back";
 
-  btn.dataset.value = value; // now this is "1".."6"
+  btn.dataset.value = value;
   btn.dataset.index = String(index);
 
-  btn.innerHTML = ""; // use innerHTML since we’ll insert <img> later
-  btn.setAttribute("aria-label", "Hidden card");
+  // hidden state
+  btn.innerHTML = "";
+  btn.style.backgroundImage = `url("${CARD_BACK}")`;
 
+  btn.setAttribute("aria-label", "Hidden card");
   btn.addEventListener("click", onCardClick);
   return btn;
 }
@@ -87,14 +91,19 @@ function reveal(btn) {
 
   const id = btn.dataset.value;
   btn.innerHTML = `<img class="icon" src="./assets/icons/${id}.png" alt="icon ${id}" />`;
+  btn.style.backgroundImage = "none";
+
   btn.setAttribute("aria-label", `Card: icon ${id}`);
 }
+
 
 function hide(btn) {
   btn.classList.remove("revealed");
   btn.classList.add("back");
 
   btn.innerHTML = "";
+  btn.style.backgroundImage = `url("${CARD_BACK}")`;
+
   btn.setAttribute("aria-label", "Hidden card");
 }
 
