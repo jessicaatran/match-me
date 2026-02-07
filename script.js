@@ -2,7 +2,6 @@ const startScreen = document.getElementById("start-screen");
 const gameScreen = document.getElementById("game-screen");
 
 const startBtn = document.getElementById("start-btn");
-const backBtn = document.getElementById("back-btn");
 const resetBtn = document.getElementById("reset");
 
 const boardEl = document.getElementById("board");
@@ -32,14 +31,11 @@ let matches = 0;
 
 function showGame() {
   startScreen.classList.add("hidden");
+  winScreen.classList.add("hidden");
   gameScreen.classList.remove("hidden");
   newGame();
 }
 
-function showStart() {
-  gameScreen.classList.add("hidden");
-  startScreen.classList.remove("hidden");
-}
 
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -186,7 +182,7 @@ function playAgain() {
 }
 
 function showStart() {
-  stopWinFloat(); // safe even if nothing is floating
+  stopWinFloat(); 
   gameScreen.classList.add("hidden");
   winScreen.classList.add("hidden");
   startScreen.classList.remove("hidden");
@@ -248,6 +244,6 @@ function spawnPixel() {
 
 
 startBtn.addEventListener("click", showGame);
-backBtn.addEventListener("click", showStart);
-resetBtn.addEventListener("click", newGame);
+resetBtn.addEventListener("click", playAgain);
+
 

@@ -72,9 +72,25 @@ button {
   min-width: 160px;
 }
 
-.btn--ghost {
-  background: transparent;
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 2px rgba(159, 168, 185, 0.25),
+    0 8px 22px rgba(159, 168, 185, 0.45);
+  filter: brightness(1.05);
 }
+
+
+.btn--ghost {
+  background: #fef7fc;
+}
+
+.btn--ghost:hover {
+  box-shadow:
+    0 0 0 2px rgba(159, 168, 185, 0.35),
+    0 6px 16px rgba(159, 168, 185, 0.35);
+}
+
 
 .game-header {
   display: grid;
@@ -129,9 +145,11 @@ button {
   opacity: 0.9;
 }
 
-/* .card.back {
+.card.back:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(159, 168, 185, 0.35);
+}
 
-} */
 
 /* Revealed state */
 .card.revealed {
@@ -144,8 +162,8 @@ button {
   width: 95%;
   height: 95%;
   object-fit: contain;
-  image-rendering: auto; /* or pixelated if your icons are pixel art */
-  pointer-events: none;  /* prevents taps on the img */
+  image-rendering: auto; 
+  pointer-events: none;  
   user-select: none;
 }
 
@@ -165,7 +183,7 @@ button {
 .win-text {
   display: flex;
   flex-direction: column;
-  gap: 28px; /* 👈 increase this */
+  gap: 28px; 
   text-align: center;
 }
 
@@ -193,7 +211,7 @@ button {
 .pixel {
   position: absolute;
   bottom: -40px;     /* start just below viewport */
-  width: 22px;       /* tweak size */
+  width: 22px;       
   height: 22px;
   image-rendering: pixelated;
   opacity: 0.9;
