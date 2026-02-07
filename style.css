@@ -108,7 +108,8 @@ button {
   border-radius: 14px;
   border: 2px solid #2F4F6F;
   color: #2F4F6F;
-  background: #FFE9EC;
+  /* background: #FFE9EC; */
+  background: #fef7fc;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
