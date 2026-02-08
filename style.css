@@ -229,3 +229,20 @@ button {
     transform: translate(var(--x, 0px), calc(-1 * (100vh + 120px))) rotate(12deg);
   }
 }
+
+.float-soft {
+  animation: floatSoft 4.5s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+@keyframes floatSoft {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

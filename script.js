@@ -9,6 +9,8 @@ const movesEl = document.getElementById("moves");
 const matchesEl = document.getElementById("matches");
 
 const winScreen = document.getElementById("win-screen");
+const winSub = document.getElementById("win-sub");
+
 
 const floatLayer = document.getElementById("float-layer");
 
@@ -21,6 +23,22 @@ const CARD_BACK = "./card_back/back1.png";
 // ];
 
 const ICON_IDS = ["1", "2", "3", "4", "5", "6"];
+
+const WIN_MESSAGES = [
+  "if we were socks, we’d be a matching pair",
+  "you unlocked this screen and my heart",
+  "if i were a cat, i'd spend all 9 lives with you",
+  "your hand looks heavy, can i hold it for you",
+  "i’d swipe right on you every time",
+  "i’d choose you in every round",
+  "if you were a card, you’d be my favorite one",
+  "i can’t fall asleep so i just fall for you instead",
+  "what did one volcano say to the other? i lava you",
+  "roses are red, violets are blue, sugar is sweet and so are you",
+  "roses are red, violets are blue, life’s better when im with you"
+];
+
+
 
 let deck = [];
 let firstCard = null;
@@ -168,10 +186,15 @@ function newGame() {
 }
 
 function showWin() {
+  // pick a random message
+  const i = Math.floor(Math.random() * WIN_MESSAGES.length);
+  winSub.textContent = WIN_MESSAGES[i];
+
   gameScreen.classList.add("hidden");
   winScreen.classList.remove("hidden");
   startWinFloat();
 }
+
 
 
 function playAgain() {
