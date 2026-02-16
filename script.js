@@ -35,7 +35,11 @@ const WIN_MESSAGES = [
   "i can’t fall asleep so i just fall for you instead",
   "what did one volcano say to the other? i lava you",
   "roses are red, violets are blue, sugar is sweet and so are you",
-  "roses are red, violets are blue, life’s better when im with you"
+  "roses are red, violets are blue, life’s better when im with you",
+  "you make my heart zoomie",
+  "rose are red, violets are blue, i could bite anyone, but i choose you",
+  "call me a microplastic the way i wanna be in you",
+  "six seven eight nine, be my valentine?"
 ];
 
 
